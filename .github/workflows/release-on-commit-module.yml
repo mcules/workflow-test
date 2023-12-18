@@ -17,13 +17,16 @@ jobs:
       - name: Install zip
         run: sudo apt-get install zip
 
+      - name: Install jq
+        run: sudo apt-get install jq
+
       - name: Compress Project
         run: zip -r project.zip .
 
-      - name: Get release name
+      - name: Get release name from module.json
         id: get_release_name
         run: |
-          RELEASE_NAME=$(jq -r .version /module.json)
+          RELEASE_NAME=$(jq -r .version module.json)
           echo "::set-output name=release_name::"v"$RELEASE_NAME"
 
       - name: Create Release
