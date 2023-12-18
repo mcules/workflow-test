@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - '/module.json'
+      - 'module.json'
 
 jobs:
   release:
